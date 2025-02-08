@@ -16,7 +16,7 @@ export default async function Recommended() {
             <Link
               href={`/recommended/${d._id}`}
               key={d._id}
-              className="max-w-[200px] h-[250px] px-2 py-3 bg-[#ecf6ff] shadow-md rounded-2xl"
+              className="max-w-[200px] h-[250px] px-2 py-3 bg-[#ecf6ff] shadow-md rounded-2xl group"
             >
               <div>
                 <Image
@@ -24,26 +24,14 @@ export default async function Recommended() {
                   alt="product image"
                   quality={100}
                   placeholder="blur"
-                  className="rounded-xl  h-[140px] object-cover"
+                  className="rounded-xl h-[140px] object-cover transition-transform transform group-hover:scale-150 duration-500"
                 />
+
                 <div className="px-3">
                   <h1 className="text-base font-medium mt-4">{d.title}</h1>
                   <h3 className="text-[12px] font-normal mt-2">{d.subTitle}</h3>
                 </div>
               </div>
-              {/* ACCORDION FOR SIZE  */}
-              {/* BUTTON VIEW DETAILS AND ADD TO CART  */}
-              {/* <div className="mt-5 flex justify-between">
-                <Link
-                  href={`/recommended/${d._id}`}
-                  className="border border-black rounded-lg "
-                >
-                  View Details
-                </Link>
-                <button className="border border-black rounded-lg  ">
-                  Add to Cart
-                </button>
-              </div> */}
             </Link>
           ))}
         </div>

@@ -1,7 +1,4 @@
 "use client"
-
-import CustomButton from "@/app/components/ui/CustomButton";
-
 export default  function SignUp() {
 const handleSignupForm = async(e) => {
   e.preventDefault();
@@ -40,7 +37,7 @@ const handleSignupForm = async(e) => {
           <input placeholder="email" name="email" className="p-3 rounded-md text-black outline-none shadow-lg" />
           <input placeholder="pass" name="password" className="p-3 rounded-md text-black outline-none shadow-lg" />
           <input placeholder="confrmPass" name="confirmPass" className="p-3 rounded-md text-black outline-none shadow-lg" />
-          <CustomButton className="p-3 mt-5 w-1/4 rounded-md bg-red-400 text-white font-semibold shadow-lg " btn="Continue"/>
+         <button className="p-3 mt-5 w-1/4 rounded-md bg-red-400 text-white font-semibold shadow-lg ">Continue</button>
        
         </form>
 
