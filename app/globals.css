@@ -2,20 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.img2 {
+  animation: img6 5s infinite linear;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes img6 {
+  50% {
+    transform: scale(1.3);
+  }
+}
+.span1 {
+  background: repeating-linear-gradient(
+    135deg,
+    #1497d2 0%,
+    #00bbdc 50%,
+    #28a8e4 100%
+  );
+  background-size: 200% auto;
+  background-position: 0 100%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  animation: slidingGradient 2s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+.span2 {
+  background: repeating-linear-gradient(
+    135deg,
+    #fc7d38 0%,
+    #ff8241 50%,
+    #e16e30 100%
+  );
+  background-size: 200% auto;
+  background-position: 0 100%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  animation: slidingGradient2 2s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes slidingGradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes slidingGradient2 {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
