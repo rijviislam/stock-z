@@ -1,5 +1,6 @@
 import clientPromise from "@/lib/mongoDb";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
+
 export async function POST(request) {
   try {
     const client = await clientPromise;
