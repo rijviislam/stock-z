@@ -1,3 +1,4 @@
+import Context from "@/components/Context";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -15,7 +16,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
     <body className={`${poppins.variable} antialiased bg-[#F2F9FF]`}>
-      <div className="h-screen">{children}</div>
+    <Context>   
+    <div className="h-screen">{children}</div>
+    </Context>
+     
     </body>
   </html>
   );
