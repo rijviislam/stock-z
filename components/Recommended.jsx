@@ -1,14 +1,12 @@
 import getPost from "@/lib/getPost";
-import Product1 from "@/public/assets/stock-5-removebg-preview.png";
 import Image from "next/image";
 import Link from "next/link";
 export default async function Recommended() {
   const data = await getPost();
-  console.log("MYDATA", data);
   return (
     <div className="w-full  mx-auto flex items-center justify-center pb-10">
       <div className="w-[1200px]  min-h-[50vh]">
-        <h1 className="text-2xl  font-semibold text-gray-700">
+        <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent">
           Recommended For You
         </h1>
         <div className="mt-10 flex flex-wrap items-start lg:gap-10 ">
@@ -20,11 +18,12 @@ export default async function Recommended() {
             >
               <div>
                 <Image
-                  src={Product1}
+                  src={d.image}
                   alt="product image"
                   quality={100}
-                  placeholder="blur"
-                  className="rounded-xl h-[140px] object-cover transition-transform transform group-hover:scale-150  duration-500"
+                  width={200}
+                  height={140}
+                  className="rounded-xl h-[140px] object-contain transition-transform transform group-hover:scale-150  duration-500"
                 />
 
                 <div className="px-3">

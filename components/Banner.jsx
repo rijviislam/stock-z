@@ -20,15 +20,6 @@ export default function Banner() {
             the market.
           </p>
         </div>
-        {/* <div className="w-1/2 img2">
-          <Image
-            src={BannerImg}
-            quality={100}
-            placeholder="blur"
-            alt="Banner Img"
-            className="w-full h-full object-cover"
-          />
-        </div> */}
         <div className="lg:w-1/2 img2 select-none">
           <Image
             src={BannerImg}
