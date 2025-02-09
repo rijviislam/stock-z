@@ -1,5 +1,5 @@
 import getPost from "@/lib/getPost";
-import Product1 from "@/public/assets/stock-201-removebg.png";
+import Product1 from "@/public/assets/stock-5-removebg-preview.png";
 import Image from "next/image";
 import Link from "next/link";
 export default async function Recommended() {
@@ -24,7 +24,7 @@ export default async function Recommended() {
                   alt="product image"
                   quality={100}
                   placeholder="blur"
-                  className="rounded-xl h-[140px] object-cover transition-transform transform group-hover:scale-150 duration-500"
+                  className="rounded-xl h-[140px] object-cover transition-transform transform group-hover:scale-150  duration-500"
                 />
 
                 <div className="px-3">
