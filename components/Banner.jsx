@@ -1,4 +1,5 @@
 import BannerImg from "@/public/assets/stock-removebg-1.png";
+
 import Image from "next/image";
 import Aos from "./Aos";
 export default function Banner() {
