@@ -98,6 +98,7 @@ export default async function RecommendedSingleProduct({ params }) {
       <RelatedProduct relatedProduct={relatedProduct} />
       {/* RECENTLY VIEW  */}
       <RecentlyViewed
+      
         recentlyViewed={formattedProduct}
         formatedId={formatedId}
       />
