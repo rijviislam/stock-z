@@ -1,3 +1,4 @@
+import RecentlyViewed from "@/components/RecentlyViewed";
 import RelatedProduct from "@/components/RelatedProduct";
 import {
   Accordion,
@@ -15,8 +16,13 @@ import Image from "next/image";
 export default async function RecommendedSingleProduct({ params }) {
   const { id } = await params;
   const product = await recommendedSinglePostDetails(id);
-  const relatedProduct = await relatedProducts(product?.brand);
+  const formatedId = product._id.toString();
 
+  const relatedProduct = await relatedProducts(product?.brand, formatedId);
+  const formattedProduct = {
+    ...product,
+    _id: product._id.toString(),
+  };
   return (
     <div className=" flex flex-col items-center w-full min-h-screen">
       <div className="w-[1200px] mt-10">
@@ -90,7 +96,11 @@ export default async function RecommendedSingleProduct({ params }) {
 
       {/* RELATED PRODUCT  */}
       <RelatedProduct relatedProduct={relatedProduct} />
-    
+      {/* RECENTLY VIEW  */}
+      <RecentlyViewed
+        recentlyViewed={formattedProduct}
+        formatedId={formatedId}
+      />
     </div>
   );
 }
