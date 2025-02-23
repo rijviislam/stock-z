@@ -16,12 +16,16 @@ import Image from "next/image";
 export default async function RecommendedSingleProduct({ params }) {
   const { id } = await params;
   const product = await recommendedSinglePostDetails(id);
+  if (!product) {
+    console.error(" Product not found, returning 404");
+    return { notFound: true }; // Handle the error gracefully
+  }
+  
   const formatedId = product._id.toString();
-
   const relatedProduct = await relatedProducts(product?.brand, formatedId);
   const formattedProduct = {
     ...product,
-    _id: product._id.toString(),
+    _id: formatedId,
   };
   return (
     <div className=" flex flex-col items-center w-full min-h-screen">
