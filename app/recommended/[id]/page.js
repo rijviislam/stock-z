@@ -14,12 +14,18 @@ import relatedProducts from "@/lib/relatedProduct";
 import Image from "next/image";
 
 export default async function RecommendedSingleProduct({ params }) {
+  console.log("Params object:", params); // Debugging
   const { id } = await params;
+  console.log("Extracted id:", id); // Ensure id is valid
+
+
   const product = await recommendedSinglePostDetails(id);
   if (!product) {
-    console.error(" Product not found, returning 404");
-    return { notFound: true }; // Handle the error gracefully
+    console.error("Product not found, returning 404");
+    return { notFound: true };
   }
+
+
   
   const formatedId = product._id.toString();
   const relatedProduct = await relatedProducts(product?.brand, formatedId);
@@ -27,6 +33,7 @@ export default async function RecommendedSingleProduct({ params }) {
     ...product,
     _id: formatedId,
   };
+
   return (
     <div className=" flex flex-col items-center w-full min-h-screen">
       <div className="w-[1200px] mt-10">
