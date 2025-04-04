@@ -1,6 +1,6 @@
 import clientPromise from "@/lib/connectiondb";
 
-export  async function recommendedSinglePostDetails(productId) {
+export default async function recommendedSinglePostDetails(productId) {
   try {
     const client = await clientPromise;
     const db = client.db("stock-z");
@@ -23,4 +23,3 @@ export  async function recommendedSinglePostDetails(productId) {
     return null;
   }
 }
-

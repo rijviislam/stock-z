@@ -9,7 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import recommendedSinglePostDetails from "@/lib/recommendedSinglePost";
+import { recommendedSinglePostDetails } from "@/lib/recommendedSinglePost";
 import relatedProducts from "@/lib/relatedProduct";
 import Image from "next/image";
 

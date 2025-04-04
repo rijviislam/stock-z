@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,16 +11,49 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
-export function SigninForm({ className, ...props }) {
+export default function SigninForm({ className, ...props }) {
+  const handleSignupForm = async (e) => {
+    e.preventDefault();
+    const newUser = {
+      username: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+      confirmPass: e.target.confirmPass.value,
+    };
+    console.log("click", newUser);
+
+    try {
+      const resp = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/api/auth/sign-up`,
+        {
+          method: "POST",
+          body: JSON.stringify(newUser),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (resp.ok) {
+        console.log("Register Done");
+        e.target.reset();
+      } else {
+        console.log("Register error");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+    }
+  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Welcome to Stock-Z</CardTitle>
+          <CardTitle className="text-xl">Welcome to Stock-ZZ</CardTitle>
           <CardDescription>Login with your or Google account</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSignupForm}>
             <div className="grid gap-6">
               <div className="flex flex-col gap-4">
                 <Button variant="outline" className="w-full">
@@ -60,6 +94,15 @@ export function SigninForm({ className, ...props }) {
                     required
                   />
                 </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="confirmPass">confirmPass</Label>
+                  <Input
+                    id="confirmPass"
+                    type="password"
+                    placeholder="confirmPass"
+                    required
+                  />
+                </div>
                 {/* <div className="grid gap-2">
                   <div className="flex items-center">
                     <Label htmlFor="password">Password</Label>
@@ -78,7 +121,7 @@ export function SigninForm({ className, ...props }) {
               </div>
               <div className="text-center text-sm">
                 Don&apos;t have an account?{" "}
-                <a href="/auth/signin" className="underline underline-offset-4">
+                <a href="/sign-in" className="underline underline-offset-4">
                   Sign in
                 </a>
               </div>

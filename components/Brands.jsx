@@ -15,7 +15,7 @@ export default function Brands() {
           Browse More Brands
         </h1>
         <div className="flex gap-6 mt-10">
-          <Link href="#">
+          <Link href="/nike">
             <Image
               src={Brands5}
               alt="Brand Product"

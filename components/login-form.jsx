@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,8 +10,27 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { signIn } from "next-auth/react";
 
 export function LoginForm({ className, ...props }) {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const res = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    });
+
+    if (res?.ok) {
+      console.log("Login successful");
+    } else {
+      console.error("Login error:", res?.error);
+    }
+  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -21,7 +41,7 @@ export function LoginForm({ className, ...props }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="grid gap-6">
               <div className="flex flex-col gap-4">
                 <Button variant="outline" className="w-full">
@@ -67,7 +87,7 @@ export function LoginForm({ className, ...props }) {
               </div>
               <div className="text-center text-sm">
                 Don&apos;t have an account?{" "}
-                <a href="/auth/signup" className="underline underline-offset-4">
+                <a href="/signup" className="underline underline-offset-4">
                   Sign up
                 </a>
               </div>
