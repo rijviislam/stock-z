@@ -49,6 +49,7 @@ export default async function Recommended() {
   try {
     // Fetch the data from the API route
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/getPost`);
+    console.log("Fetching data from:", res);
 
     // Check if the response is successful (status 200)
     if (!res.ok) {

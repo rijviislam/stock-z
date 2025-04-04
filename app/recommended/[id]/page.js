@@ -1,5 +1,4 @@
 import RecentlyViewed from "@/components/RecentlyViewed";
-import RelatedProduct from "@/components/RelatedProduct";
 import {
   Accordion,
   AccordionContent,
@@ -9,9 +8,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import { recommendedSinglePostDetails } from "@/lib/recommendedSinglePost";
-import relatedProducts from "@/lib/relatedProduct";
+import RelatedProduct from "@/components/RelatedProduct";
 import Image from "next/image";
+import { recommendedSinglePostDetails } from "../../api/recommendedSinglePost/route";
+import { relatedProducts } from "../../api/relatedProduct/route";
 
 export default async function RecommendedSingleProduct({ params }) {
   console.log("Params object:", params); // Debugging
@@ -29,6 +29,7 @@ export default async function RecommendedSingleProduct({ params }) {
   
   const formatedId = product._id.toString();
   const relatedProduct = await relatedProducts(product?.brand, formatedId);
+  console.log("Related Product", relatedProduct)
   const formattedProduct = {
     ...product,
     _id: formatedId,
@@ -36,7 +37,7 @@ export default async function RecommendedSingleProduct({ params }) {
 
   return (
     <div className=" flex flex-col items-center w-full min-h-screen">
-      <div className="w-[1200px] mt-10">
+      <div className="w-[1200px] mt-10 ">
         {product ? (
           <div className="w-full flex items-start ">
             <div className="w-full">
