@@ -46,9 +46,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Recommended() {
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   try {
     // Fetch the data from the API route
-    const res = await fetch(`/api/getPost`);
+    const res = await fetch(`${BASE_URL}/api/getPost`);
     console.log("Fetching data from:", res);
 
     // Check if the response is successful (status 200)
