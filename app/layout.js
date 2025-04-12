@@ -1,3 +1,4 @@
+import Navbar from "@/app/share/Navbar";
 import Context from "@/components/Context";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable} antialiased bg-[#F2F9FF]`}>
         <AuthProvider>
           <Context>
+            <Navbar/>
             <div className="h-screen">{children}</div>
           </Context>
         </AuthProvider>

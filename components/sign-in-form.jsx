@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,8 +11,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function SigninForm({ className, ...props }) {
+  const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.BASE_URL;
   const handleSignupForm = async (e) => {
     e.preventDefault();
     const newUser = {
@@ -23,20 +27,18 @@ export default function SigninForm({ className, ...props }) {
     console.log("click", newUser);
 
     try {
-      const resp = await fetch(
-        `${process.env.NEXT_PUBLIC_URL}/api/auth/sign-up`,
-        {
-          method: "POST",
-          body: JSON.stringify(newUser),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const resp = await fetch(`${baseUrl}/api/auth/sign-up`, {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (resp.ok) {
         console.log("Register Done");
         e.target.reset();
+        router.push("/");
       } else {
         console.log("Register error");
       }
