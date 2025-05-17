@@ -9,7 +9,7 @@ import {
 
 export default function Navbar() {
   return (
-    <div className="border-2 border-red-600 flex items-center justify-center bg-black">
+    <div className=" flex items-center justify-center ">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>

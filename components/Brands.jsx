@@ -8,6 +8,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Brands() {
+  const nike = "Nike";
+  const puma = "puma";
+  const adidas = "adidas";
+  const crocs = "crocs";
+  const asics = "asics";
+
   return (
     <div className=" flex items-center justify-center ">
       <div className="max-w-[1200px] my-10">
@@ -15,14 +21,14 @@ export default function Brands() {
           Browse More Brands
         </h1>
         <div className="flex gap-6 mt-10">
-          <Link href="/nike">
+          <Link href={`/brands/${nike}`}>
             <Image
               src={Brands5}
               alt="Brand Product"
               className="rounded-lg shadow-md w-[220px]"
             />
           </Link>
-          <Link href="#">
+          <Link href={`/brands/${puma}`}>
             <Image
               src={Brands1}
               alt="Brand Product"
@@ -30,21 +36,21 @@ export default function Brands() {
             />
           </Link>
 
-          <Link href="#">
+          <Link href={`/brands/${adidas}`}>
             <Image
               src={Brands2}
               alt="Brand Product"
               className="rounded-lg shadow-md w-[220px]"
             />
           </Link>
-          <Link href="#">
+          <Link href={`/brands/${crocs}`}>
             <Image
               src={Brands3}
               alt="Brand Product"
               className="rounded-lg shadow-md w-[220px]"
             />
           </Link>
-          <Link href="#">
+          <Link href={`/brands/${asics}`}>
             <Image
               src={Brands4}
               alt="Brand Product"

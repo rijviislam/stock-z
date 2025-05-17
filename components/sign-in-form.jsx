@@ -118,13 +118,13 @@ export default function SigninForm({ className, ...props }) {
                   <Input id="password" type="password" required />
                 </div> */}
                 <Button type="submit" className="w-full">
-                  Login
+                  Sign up
                 </Button>
               </div>
               <div className="text-center text-sm">
-                Don&apos;t have an account?{" "}
+                Have an account?{" "}
                 <a href="/sign-in" className="underline underline-offset-4">
-                  Sign in
+                  Log in
                 </a>
               </div>
             </div>
