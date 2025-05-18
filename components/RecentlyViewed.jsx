@@ -50,9 +50,9 @@ export default function RecentlyViewed({ recentlyViewed }) {
   }
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-[1200px] mb-10">
-        <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent">
+    <div className="flex items-center justify-center  mx-5 lg:mx-0">
+      <div className="md:w-[1200px] w-full mb-10 ">
+        <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent text-center lg:text-start">
           Recently Viewed
         </h1>
         <div className="mt-5 ">

@@ -74,10 +74,10 @@ export default async function Recommended() {
     return (
       <div className="w-full  mx-auto flex items-center justify-center pb-10">
         <div className="w-[1200px]  min-h-[50vh]">
-          <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent">
+          <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent text-center lg:text-start">
             Recommended For You
           </h1>
-          <div className="mt-10 flex flex-wrap items-start lg:gap-10 ">
+          <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start lg:items-start lg:gap-10 gap-5 ">
             {data?.map((d) => (
               <Link
                 href={`/recommended/${d._id}`}

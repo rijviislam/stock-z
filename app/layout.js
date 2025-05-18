@@ -1,8 +1,8 @@
-import Navbar from "@/app/share/Navbar";
 import Context from "@/components/Context";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "./services/AuthProvider";
+import Navbar from "./share/Navbar";
 
 const poppins = Poppins({
   variable: "--font-poppins",

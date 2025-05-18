@@ -20,12 +20,12 @@ import Image from "next/image";
 export default function TrendingProduct() {
   return (
     <div className=" flex items-center justify-center">
-      <div className="w-[1200px]">
-        <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent">
+      <div className="lg:w-[1200px]">
+        <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent lg:text-start text-center">
           Trending Product
         </h1>
 
-        <div className="my-10">
+        <div className="my-10 ">
           <Carousel
             opts={{ loop: true }}
             plugins={[
@@ -90,8 +90,8 @@ export default function TrendingProduct() {
                 />
               </CarouselItem>
             </CarouselContent>
-            <CarouselPrevious className="bg-[#ecf6ff] border border-gray-200 shadow-lg" />
-            <CarouselNext className="bg-[#ecf6ff] border border-gray-200 shadow-lg" />
+            <CarouselPrevious className="bg-[#ecf6ff] border border-gray-200 shadow-lg  xxl:flex items-center justify-center hidden" />
+            <CarouselNext className="bg-[#ecf6ff] border border-gray-200 shadow-lg xxl:flex items-center justify-center hidden" />
           </Carousel>
         </div>
       </div>

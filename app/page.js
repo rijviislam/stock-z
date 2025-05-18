@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Banner />
-      <RecentlyViewed/>
+      <RecentlyViewed />
       <Recommended />
       <TrendingProduct />
       <Brands />
