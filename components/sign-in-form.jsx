@@ -38,7 +38,7 @@ export default function SigninForm({ className, ...props }) {
       if (resp.ok) {
         console.log("Register Done");
         e.target.reset();
-        router.push("/");
+        router.push("/sign-in");
       } else {
         console.log("Register error");
       }

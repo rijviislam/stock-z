@@ -29,7 +29,7 @@ export function LoginForm({ className, ...props }) {
     if (res?.ok) {
       console.log("Login successful");
       // Optionally redirect:
-      // window.location.href = "/dashboard";
+      window.location.href = "/";
     } else {
       console.error("Login error:", res?.error);
     }

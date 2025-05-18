@@ -2,17 +2,13 @@ import clientPromise from "@/lib/connectiondb";
 import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-// import GithubProvider from "next-auth/providers/github";
 
 const handler = NextAuth({
   session: {
     strategy: "jwt",
   },
   providers: [
-    // GithubProvider({
-    //   clientId: process.env.GITHUB_ID,
-    //   clientSecret: process.env.GITHUB_SECRET,
-    // }),
+
 
     CredentialsProvider({
       name: "Credentials",
@@ -70,23 +66,7 @@ const handler = NextAuth({
       return session;
     },
 
-    // async signIn({ account, profile }) {
-    //   if (account?.provider === "github") {
-    //     const client = await clientPromise;
-    //     const db = client.db("stock-z");
-    //     const userCollection = db.collection("users");
 
-    //     const existingUser = await userCollection.findOne({ email: profile.email });
-    //     if (!existingUser) {
-    //       await userCollection.insertOne({
-    //         username: profile.name,
-    //         email: profile.email,
-    //         password: null,
-    //       });
-    //     }
-    //   }
-    //   return true;
-    // },
   },
 
   pages: {

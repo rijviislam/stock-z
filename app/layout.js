@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable} antialiased bg-[#F2F9FF]`}>
         <AuthProvider>
           <Context>
-            <Navbar/>
+              <Navbar />
             <div className="h-screen">{children}</div>
           </Context>
         </AuthProvider>
