@@ -9,9 +9,9 @@ import Link from "next/link";
 
 export default function Brands() {
   const nike = "Nike";
-  const puma = "puma";
   const adidas = "adidas";
-  const crocs = "crocs";
+  const corcs = "corcs";
+  const newbalance = "newbalance";
   const asics = "asics";
 
   return (
@@ -28,22 +28,21 @@ export default function Brands() {
               className="rounded-lg shadow-md w-[220px]"
             />
           </Link>
-          <Link href={`/brands/${puma}`}>
+          <Link href={`/brands/${adidas}`}>
             <Image
               src={Brands1}
               alt="Brand Product"
               className="rounded-lg shadow-md w-[220px]"
             />
           </Link>
-
-          <Link href={`/brands/${adidas}`}>
+          <Link href={`/brands/${corcs}`}>
             <Image
               src={Brands2}
               alt="Brand Product"
               className="rounded-lg shadow-md w-[220px]"
             />
           </Link>
-          <Link href={`/brands/${crocs}`}>
+          <Link href={`/brands/${newbalance}`}>
             <Image
               src={Brands3}
               alt="Brand Product"

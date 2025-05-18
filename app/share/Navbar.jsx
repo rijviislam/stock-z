@@ -1,4 +1,5 @@
 "use client";
+import { Input } from "@/components/ui/input";
 import UserInfoBtn from "@/components/UserInfoBtn";
 import { SessionProvider } from "next-auth/react";
 import Image from "next/image";
@@ -8,13 +9,20 @@ export default function Navbar() {
   return (
     <SessionProvider>
       <div className="relative">
-        <div className="flex fixed w-full items-center z-50 bg-[#F3F9FF] justify-around shadow-md py-2">
+        <div className="flex fixed w-full items-center z-50 bg-[#F3F9FF] justify-center gap-10 shadow-md py-2">
           <div>
             <a href="/">
               <Image src={Logo} width={50} height={50} alt="Logo" />
             </a>
           </div>
-          <ul className="flex items-center justify-center gap-20 px-20 text-[#0D769B] font-medium">
+          <div>
+            <Input
+              type="text"
+              placeholder="Search for brand, color, etc."
+              className="w-[550px] outline-none border-none"
+            />
+          </div>
+          <ul className="flex items-center justify-center gap-10  text-[#0D769B] font-medium">
             <li>
               <a href="/">Home</a>
             </li>
