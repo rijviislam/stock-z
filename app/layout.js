@@ -1,4 +1,5 @@
 import Context from "@/components/Context";
+import SearchProvider from "@/context/SearchContext";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "./services/AuthProvider";
@@ -19,10 +20,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${poppins.variable} antialiased bg-[#F2F9FF]`}>
         <AuthProvider>
-          <Context>
+          <SearchProvider>
+            <Context>
               <Navbar />
-            <div className="h-screen">{children}</div>
-          </Context>
+              <div className="h-screen">{children}</div>
+            </Context>
+          </SearchProvider>
         </AuthProvider>
       </body>
     </html>
