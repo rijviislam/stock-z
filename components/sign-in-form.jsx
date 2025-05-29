@@ -24,7 +24,6 @@ export default function SigninForm({ className, ...props }) {
       password: e.target.password.value,
       confirmPass: e.target.confirmPass.value,
     };
-    console.log("click", newUser);
 
     try {
       const resp = await fetch(`${baseUrl}/api/auth/sign-up`, {
@@ -36,14 +35,13 @@ export default function SigninForm({ className, ...props }) {
       });
 
       if (resp.ok) {
-        console.log("Register Done");
         e.target.reset();
         router.push("/sign-in");
       } else {
         console.log("Register error");
       }
     } catch (error) {
-      console.error("Error during registration:", error);
+      å.error("Error during registration:", error);
     }
   };
 

@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function UserInfoBtn() {
   const { data: session, status } = useSession();
   const userName = session?.user?.name;
-  //   console.log(session.user.name, "data");
   return (
     <div>
       {userName ? (
