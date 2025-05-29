@@ -1,12 +1,10 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getPostApi } from "@/app/api/getPost/route";
-import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Recommended() {
-  const session = await getServerSession(authOptions);
-  console.log(session, "sess");
+  // const session = await getServerSession(authOptions);
+  // console.log(session, "sess");
   const data = await getPostApi();
   console.log("Products:", data);
 
