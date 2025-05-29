@@ -1,4 +1,4 @@
-import clientPromise from "@/lib/connectiondb";
+import clientPromise from "@/lib/connectDb";
 import { ObjectId } from "mongodb";
 
 export  async function relatedProducts(productBrand, formattedId) {

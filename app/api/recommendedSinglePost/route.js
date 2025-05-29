@@ -25,7 +25,7 @@
 // }
 
 
-import clientPromise from "@/lib/connectiondb";
+import clientPromise from "@/lib/connectDb";
 
 export  async function recommendedSinglePostDetails(productId) {
   try {

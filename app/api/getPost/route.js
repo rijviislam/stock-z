@@ -1,4 +1,4 @@
-import clientPromise from "@/lib/connectiondb";
+import clientPromise from "@/lib/connectDb";
 
 export async function GET() {
   try {

@@ -36,7 +36,7 @@ export default async function RecommendedSingleProduct({ params }) {
   };
 
   return (
-    <div className=" flex flex-col items-center w-full min-h-screen">
+    <div className=" flex flex-col items-center w-full min-h-screen mt-20">
       <div className="w-[1200px] mt-10 ">
         {product ? (
           <div className="w-full flex items-start ">

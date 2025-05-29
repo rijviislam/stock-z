@@ -4,7 +4,7 @@ import Image from "next/image";
 import Aos from "./Aos";
 export default function Banner() {
   return (
-    <div className=" h-screen font-poppins flex items-center justify-center overflow-x-hidden relative z-40 ">
+    <div className=" h-screen font-poppins flex items-center justify-center overflow-x-hidden relative z-30 ">
       <Aos />
       <div className=" max-w-[1200px] h-full flex items-center lg:px-8 px-10  flex-col lg:flex-row justify-center gap-10 xl:px-0">
         <div

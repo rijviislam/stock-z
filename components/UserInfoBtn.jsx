@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 export default function UserInfoBtn() {
@@ -9,28 +9,39 @@ export default function UserInfoBtn() {
   return (
     <div>
       {userName ? (
-        <button className="w-[40px] h-[40px]">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-        </button>
+        <div className="flex items-center justify-center gap-5">
+          <div className="flex flex-col items-center">
+            <button className="w-[40px] h-[40px]  rounded-full overflow-hidden">
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </button>
+            <small className="font-bold">{userName}</small>
+          </div>
+          <button
+            onClick={() => signOut()}
+            className="bg-[#ff2323] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
+          >
+            Logout
+          </button>
+        </div>
       ) : (
         <div className="flex items-center justify-center gap-5">
           <Link
-            href="/sign-in"
+            href="/api/auth/signin"
             className="bg-[#B35929] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
           >
             Login
           </Link>
           <Link
-            href="/signup"
+            href="/api/auth/sign-up"
             className="bg-[#0D769B] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
           >
             Sign Up
           </Link>
 
-          <button className="md:hidden block cursor-pointer">
+          <button className="md:hidden block cursor-pointer border-2 border-black">
             <svg
               fill="#B35929"
               version="1.1"

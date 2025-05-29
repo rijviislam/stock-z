@@ -1,79 +1,68 @@
-import clientPromise from "@/lib/connectiondb";
-import bcrypt from "bcryptjs";
+import connectDb from "@/lib/connectDb";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const handler = NextAuth({
+export const authOptions = {
+  secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
   session: {
     strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
   },
   providers: [
-
-
     CredentialsProvider({
-      name: "Credentials",
       credentials: {
-        email: {},
-        password: {},
+        email: {
+          label: "Email",
+          type: "text",
+          required: true,
+          placeholder: "Enter your email",
+        },
+        password: {
+          label: "Password",
+          type: "password",
+          required: true,
+          placeholder: "Enter your password",
+        },
       },
       async authorize(credentials) {
-        try {
-          const client = await clientPromise;
-          const db = client.db("stock-z");
-          const userCollection = db.collection("users");
-
-          const user = await userCollection.findOne({ email: credentials.email });
-          if (!user) {
-            throw new Error("User not found");
-          }
-
-          const isValidPassword = await bcrypt.compare(credentials.password, user.password);
-          if (!isValidPassword) {
-            throw new Error("Invalid password");
-          }
-
-          return {
-            id: user._id.toString(),
-            name: user.username,
-            email: user.email,
-          };
-        } catch (error) {
-          console.error("Login error:", error.message);
+        const { email, password } = credentials;
+        if (!credentials) {
           return null;
         }
+        if (email) {
+          const db = await connectDb();
+          const currentUser = await db.collection("users").findOne({ email });
+          console.log(currentUser, "CurrentUser");
+          // const currUser = users.find((userEmail) => userEmail.email === email);
+          // console.log("userr", currUser);
+          if (currentUser) {
+            if (currentUser.password === password) {
+              return currentUser;
+            }
+          }
+        }
+        return null;
       },
     }),
+    // GoogleProvider({
+    //   clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+    //   clientSecret: process.env.NEXT_PUBLICGOOGLE_CLIENT_SECRET,
+    // }),
   ],
-
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.email = user.email;
-        token.name = user.name;
+    async jwt({ token, account, user }) {
+      // Persist the OAuth access_token and or the user id to the token right after signin
+      if (account) {
+        token.type = user.type;
       }
       return token;
     },
-
     async session({ session, token }) {
-      if (token) {
-        session.user = {
-          id: token.id,
-          email: token.email,
-          name: token.name,
-        };
-      }
+      session.user.type = token.type;
       return session;
     },
-
-
   },
-
-  pages: {
-    signIn: "/sign-in",
-  },
-
-  secret: process.env.NEXTAUTH_SECRET,
-});
+};
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
