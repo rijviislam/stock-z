@@ -5,7 +5,6 @@ export const recommendedSinglePostDetails = async (productId) => {
     const client = await connectDb();
     const ProductCollection = client.collection("stockProduct");
     // Convert productId to ObjectId
-    console.log("ProductId", productId);
     const productDetails = await ProductCollection.findOne({
       _id: productId,
     });
@@ -14,7 +13,7 @@ export const recommendedSinglePostDetails = async (productId) => {
     }
     return productDetails;
   } catch (error) {
-    console.error("Error fetching posts:", error);
+    // console.error("Error fetching posts:", error);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {

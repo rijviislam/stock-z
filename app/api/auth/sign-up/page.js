@@ -17,7 +17,7 @@ export default function SignUpPage() {
         "content-type": "application/json",
       },
     });
-    console.log("Ress", res);
+    // console.log("Ress", res);
   };
   return (
     <div className="text-center mt-32">

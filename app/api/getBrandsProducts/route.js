@@ -7,7 +7,7 @@ export async function GET(request) {
 
     // Get the 'brand' from query string
     const { searchParams } = new URL(request.url);
-    console.log("SEARCH",searchParams)
+    // console.log("SEARCH",searchParams)
     const brand = searchParams.get('brand');
 
     if (!brand) {
@@ -18,7 +18,6 @@ export async function GET(request) {
 
     return Response.json(products);
   } catch (error) {
-    console.error(error);
     return Response.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

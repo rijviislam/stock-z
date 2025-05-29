@@ -32,7 +32,7 @@ export const authOptions = {
         if (email) {
           const db = await connectDb();
           const currentUser = await db.collection("users").findOne({ email });
-          console.log(currentUser, "CurrentUser");
+          // console.log(currentUser, "CurrentUser");
           // const currUser = users.find((userEmail) => userEmail.email === email);
           // console.log("userr", currUser);
           if (currentUser) {

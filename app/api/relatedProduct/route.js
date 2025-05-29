@@ -19,7 +19,7 @@ export const relatedProducts = async (productBrand, formattedId) => {
 
     return productDetails;
   } catch (error) {
-    console.error("Error fetching posts:", error);
+    // console.error("Error fetching posts:", error);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {

@@ -2,7 +2,7 @@
 import { Input } from "@/components/ui/input";
 import UserInfoBtn from "@/components/UserInfoBtn";
 import { useSearch } from "@/context/SearchContext";
-import { SessionProvider, useSession } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -11,8 +11,8 @@ import Logo from "../../public/assets/logo-new.png";
 export default function Navbar() {
   const { searchItem, setSearchItem } = useSearch();
   const [resule, setResult] = useState("");
-  const session = useSession();
-  console.log("Ses", session);
+  // const session = useSession();
+  // console.log("Ses", session);
   useEffect(() => {
     const fetchSearchResult = async () => {
       if (!searchItem) {

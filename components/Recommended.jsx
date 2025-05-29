@@ -6,7 +6,6 @@ export default async function Recommended() {
   // const session = await getServerSession(authOptions);
   // console.log(session, "sess");
   const data = await getPostApi();
-  console.log("Products:", data);
 
   return (
     <div>
