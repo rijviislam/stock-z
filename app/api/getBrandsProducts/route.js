@@ -1,10 +1,9 @@
-import clientPromise from "@/lib/connectDb";
+import connectDb from "@/lib/connectDb";
 
 export async function GET(request) {
   try {
-    const client = await clientPromise;
-    const db = client.db("stock-z");
-    const ProductCollection = db.collection("stockProduct");
+    const client = await connectDb();
+    const ProductCollection = client.collection("stockProduct");
 
     // Get the 'brand' from query string
     const { searchParams } = new URL(request.url);

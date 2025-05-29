@@ -33,7 +33,7 @@ export default function BrandPage() {
   if (error) return <div className="text-red-500 text-center py-8">Error: {error}</div>;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 mt-32">
       <h1 className="text-3xl font-bold mb-6">
         {brand?.toUpperCase()}
       </h1>

@@ -17,7 +17,7 @@ export default function Brands() {
   return (
     <div className=" flex items-center justify-center ">
       <div className="max-w-[1200px] my-10">
-        <h1 className="text-2xl font-semibold text-gray-700 text-shadow-lg bg-transparent lg:text-start text-center">
+        <h1 className="text-2xl font-semibold text-gray-700 text-shadow-lg bg-transparent lg:text-center text-center">
           Browse More Brands
         </h1>
         <div className="flex flex-wrap items-center justify-center gap-6 mt-10">

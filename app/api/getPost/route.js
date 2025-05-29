@@ -1,19 +1,11 @@
-import clientPromise from "@/lib/connectDb";
+import connectDb from "@/lib/connectDb";
 
-export async function GET() {
+export const getPostApi = async () => {
   try {
-    const client = await clientPromise;
-    const db = client.db("stock-z");
-    const ProductCollection = db.collection("stockProduct");
-
+    const client = await connectDb();
+    const ProductCollection = client.collection("stockProduct");
     const posts = await ProductCollection.find().toArray();
-
-    return new Response(JSON.stringify(posts), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    return posts;
   } catch (error) {
     console.error("Error fetching posts:", error);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
@@ -23,4 +15,4 @@ export async function GET() {
       },
     });
   }
-}
+};

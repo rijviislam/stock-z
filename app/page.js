@@ -12,6 +12,10 @@ export default function Home() {
       <Recommended />
       <TrendingProduct />
       <Brands />
+
+      {/* 
+
+  */}
     </>
   );
 }

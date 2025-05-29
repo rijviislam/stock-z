@@ -14,6 +14,7 @@ import { recommendedSinglePostDetails } from "../../api/recommendedSinglePost/ro
 import { relatedProducts } from "../../api/relatedProduct/route";
 
 export default async function RecommendedSingleProduct({ params }) {
+  
   console.log("Params object:", params); // Debugging
   const { id } = await params;
   console.log("Extracted id:", id); // Ensure id is valid

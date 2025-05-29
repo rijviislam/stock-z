@@ -54,16 +54,16 @@ export default function Navbar() {
 
           <ul className="md:flex items-center justify-center gap-5 xl:gap-10  text-[#0D769B] font-medium hidden ">
             <li>
-              <a href="/">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <a href="/about">About</a>
+              <Link href="/about">About</Link>
             </li>
             <li>
-              <a href="/product">Product</a>
+              <Link href="/all-products">All Products</Link>
             </li>
             <li>
-              <a href="/services">Services</a>
+              <Link href="/sell">Sell</Link>
             </li>
           </ul>
 

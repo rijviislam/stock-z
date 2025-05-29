@@ -52,7 +52,7 @@ export default function RecentlyViewed({ recentlyViewed }) {
   return (
     <div className="flex items-center justify-center  mx-5 lg:mx-0">
       <div className="md:w-[1200px] w-full mb-10 ">
-        <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent text-center lg:text-start">
+        <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent text-center lg:text-center">
           Recently Viewed
         </h1>
         <div className="mt-5 ">
@@ -68,7 +68,7 @@ export default function RecentlyViewed({ recentlyViewed }) {
               {recentDatat.length > 0 ? (
                 recentDatat?.map((d) => (
                   <CarouselItem
-                    className="basis-1/5.5  px-2 py-3 bg-[#ecf6ff]  rounded-2xl group  ml-4 w-[200px] h-[250px] shadow-sm"
+                    className="basis-1/5.5  px-2 py-3 bg-[#ecf6ff]  rounded-2xl group  ml-4 w-[200px] h-[250px] shadow-sm "
                     key={d._id}
                   >
                     <Link href={`/recommended/${d._id}`}>

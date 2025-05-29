@@ -19,9 +19,9 @@ import Image from "next/image";
 
 export default function TrendingProduct() {
   return (
-    <div className=" flex items-center justify-center">
+    <div className=" flex items-center justify-center my-10">
       <div className="lg:w-[1200px]">
-        <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent lg:text-start text-center">
+        <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent lg:text-center text-center">
           Trending Product
         </h1>
 
