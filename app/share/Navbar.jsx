@@ -1,8 +1,7 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import UserInfoBtn from "@/components/UserInfoBtn";
 import { useSearch } from "@/context/SearchContext";
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -11,8 +10,8 @@ import Logo from "../../public/assets/logo-new.png";
 export default function Navbar() {
   const { searchItem, setSearchItem } = useSearch();
   const [resule, setResult] = useState("");
-  // const session = useSession();
-  // console.log("Ses", session);
+  const session = useSession();
+  console.log("Ses", session);
   useEffect(() => {
     const fetchSearchResult = async () => {
       if (!searchItem) {
@@ -66,8 +65,37 @@ export default function Navbar() {
               <Link href="/sell">Sell</Link>
             </li>
           </ul>
+          <div className="flex items-center gap-5">
+            <div>
+              {session.data ? (
+                <button
+                  className="bg-red-500 px-3 py-[6px] text-[15px] rounded-lg text-white font-medium cursor-pointer"
+                  onClick={() => signOut()}
+                >
+                  Log out
+                </button>
+              ) : (
+                <button>
+                  <Link
+                    href="/api/auth/signin"
+                    className="bg-[#B35929] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
+                  >
+                    Login
+                  </Link>
+                </button>
+              )}
+            </div>
+            <button>
+              <Link
+                href="/api/auth/sign-up"
+                className="bg-[#0D769B] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
+              >
+                Sign Up
+              </Link>
+            </button>
+          </div>
 
-          <UserInfoBtn />
+          {/* <UserInfoBtn /> */}
         </div>
         {resule.length > 1 && (
           <div className=" bg-[#dfebf7] min-h-full w-full absolute z-40 top-[85px] flex flex-wrap items-center justify-center lg:justify-center lg:items-start lg:gap-10 gap-5 p-10">
