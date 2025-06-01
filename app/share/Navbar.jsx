@@ -18,7 +18,6 @@ export default function Navbar() {
         setResult([]);
         return;
       }
-
       try {
         const res = await fetch(`/api/search?q=${searchItem}`);
         const data = await res.json();
@@ -67,7 +66,7 @@ export default function Navbar() {
           </ul>
           <div className="flex items-center gap-5">
             <div>
-              {session.data ? (
+              {session?.data ? (
                 <button
                   className="bg-red-500 px-3 py-[6px] text-[15px] rounded-lg text-white font-medium cursor-pointer"
                   onClick={() => signOut()}
@@ -87,7 +86,7 @@ export default function Navbar() {
             </div>
             <button>
               <Link
-                href="/api/auth/sign-up"
+                href="/signup"
                 className="bg-[#0D769B] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
               >
                 Sign Up

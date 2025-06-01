@@ -22,14 +22,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased bg-[#F2F9FF]`}>
-        <SearchProvider>
-          <AuthProvider>
+        <AuthProvider>
+          <SearchProvider>
             <Context>
               <Navbar />
               <div className="h-screen">{children}</div>
             </Context>
-          </AuthProvider>
-        </SearchProvider>
+          </SearchProvider>
+        </AuthProvider>
       </body>
     </html>
   );

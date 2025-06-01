@@ -12,7 +12,9 @@ export const POST = async (req) => {
       return Response.json({ message: "User Already Exist" }, { status: 304 });
     }
     const hashPass = bcrypt.hashSync(newUser.password, 14)
-    const response = await userCollection.insertOne({...newUser, password:hashPass});
+    const confHashPass = bcrypt.hashSync(newUser.confirmPass, 14)
+
+    const response = await userCollection.insertOne({...newUser, password:hashPass, confirmPass:confHashPass});
     return Response.json({ message: "New User created" });
   } catch (error) {
     return Response.json({ message: "Something went Wrong" }, { status: 500 });
