@@ -79,7 +79,7 @@ export default function Navbar() {
               ) : (
                 <button>
                   <Link
-                    href="/api/auth/signin"
+                    href="/login"
                     className="bg-[#B35929] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
                   >
                     Login
