@@ -77,24 +77,26 @@ export default function Navbar() {
                   Log out
                 </button>
               ) : (
-                <button>
-                  <Link
-                    href="/login"
-                    className="bg-[#B35929] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
-                  >
-                    Login
-                  </Link>
-                </button>
+                <div>
+                  <button>
+                    <Link
+                      href="/login"
+                      className="bg-[#B35929] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
+                    >
+                      Login
+                    </Link>
+                  </button>
+                  <button>
+                    <Link
+                      href="/signup"
+                      className="bg-[#0D769B] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
+                    >
+                      Sign Up
+                    </Link>
+                  </button>
+                </div>
               )}
             </div>
-            <button>
-              <Link
-                href="/signup"
-                className="bg-[#0D769B] px-3 py-2 text-[15px] rounded-lg text-white font-medium cursor-pointer"
-              >
-                Sign Up
-              </Link>
-            </button>
           </div>
 
           {/* <UserInfoBtn /> */}
