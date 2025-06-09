@@ -1,14 +1,16 @@
-import clientPromise from "@/lib/connectDb";
+import connectDb from "@/lib/connectDb";
 
 export async function GET(req) {
   try {
-    const client = await clientPromise;
-    const db = client.db("stock-z");
+    const db = await connectDb();
+    // const db = await client.db("stock-z");
     const ProductCollection = db.collection("stockProduct");
 
     // Extract query parameters from the request URL
-    const { searchParams } = new URL(req.url);
+    const searchParams = req.nextUrl.searchParams;
     const searchQuery = searchParams.get("q"); // Example: /api/products?q=iphone
+
+    console.log("Search query:", searchQuery);
 
     let query = {};
 
@@ -33,7 +35,7 @@ export async function GET(req) {
       },
     });
   } catch (error) {
-    // console.error("Error fetching posts:", error);
+    console.error("Error fetching posts:", error);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {
