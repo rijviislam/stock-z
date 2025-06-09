@@ -14,7 +14,7 @@ export default function BrandPage() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await fetch(`/api/getBrandsProducts?brand=${brand}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getBrandsProducts?brand=${brand}`);
         if (!res.ok) throw new Error("Failed to fetch products");
         const data = await res.json();
         setProducts(data);
