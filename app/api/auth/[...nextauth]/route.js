@@ -1,4 +1,3 @@
-// import connectDb from "@/lib/connectDb";
 import connectDb from "@/lib/connectDb";
 import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
@@ -6,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const handler = NextAuth({
   session: {
-    secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
+    secret: process.env.AUTH_SECRET,
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
