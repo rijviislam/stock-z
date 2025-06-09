@@ -25,10 +25,10 @@ export default function SigninForm({ className, ...props }) {
       password: e.target.password.value,
       confirmPass: e.target.confirmPass.value,
     };
-    if (password !== confirmPass) {
-      console.log("errrrrr");
-      return null;
-    }
+    // if (password !== confirmPass) {
+    //   console.log("errrrrr");
+    //   return null;
+    // }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/signup/api`, {
       method: "POST",
