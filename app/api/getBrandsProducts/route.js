@@ -1,4 +1,5 @@
 import connectDb from "@/lib/connectDb";
+import { NextResponse } from "next/server";
 
 export async function GET(request) {
   try {
@@ -11,14 +12,14 @@ export async function GET(request) {
     const brand = searchParams.get('brand');
 
     if (!brand) {
-      return Response.json({ error: "Brand is required" }, { status: 400 });
+      return NextResponse.json({ error: "Brand is required" }, { status: 400 });
     }
 
     const products = await ProductCollection.find({ brand }).toArray();
 
-    return Response.json(products);
+    return NextResponse.json(products);
   } catch (error) {
-    return Response.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
 

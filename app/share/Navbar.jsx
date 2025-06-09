@@ -11,6 +11,7 @@ export default function Navbar() {
   const { searchItem, setSearchItem } = useSearch();
   const [resule, setResult] = useState("");
   const session = useSession();
+
   console.log("Ses", session);
   useEffect(() => {
     const fetchSearchResult = async () => {
@@ -19,7 +20,9 @@ export default function Navbar() {
         return;
       }
       try {
-        const res = await fetch(`/api/search?q=${searchItem}`);
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/search?q=${searchItem}`
+        );
         const data = await res.json();
         setResult(data);
       } catch (error) {

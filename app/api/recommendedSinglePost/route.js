@@ -1,4 +1,5 @@
 import connectDb from "@/lib/connectDb";
+import { NextResponse } from "next/server";
 
 export const recommendedSinglePostDetails = async (productId) => {
   try {
@@ -14,7 +15,7 @@ export const recommendedSinglePostDetails = async (productId) => {
     return productDetails;
   } catch (error) {
     // console.error("Error fetching posts:", error);
-    return new Response(JSON.stringify({ error: "Internal Server Error" }), {
+    return new NextResponse(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {
         "Content-Type": "application/json",

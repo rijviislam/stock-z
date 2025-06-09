@@ -1,5 +1,6 @@
 import connectDb from "@/lib/connectDb";
 import { ObjectId } from "mongodb";
+import { NextResponse } from "next/server";
 
 export const relatedProducts = async (productBrand, formattedId) => {
   try {
@@ -20,7 +21,7 @@ export const relatedProducts = async (productBrand, formattedId) => {
     return productDetails;
   } catch (error) {
     // console.error("Error fetching posts:", error);
-    return new Response(JSON.stringify({ error: "Internal Server Error" }), {
+    return new NextResponse(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {
         "Content-Type": "application/json",

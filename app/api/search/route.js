@@ -1,4 +1,5 @@
 import connectDb from "@/lib/connectDb";
+import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try {
@@ -28,7 +29,7 @@ export async function GET(req) {
 
     const posts = await ProductCollection.find(query).toArray();
 
-    return new Response(JSON.stringify(posts), {
+    return new NextResponse(JSON.stringify(posts), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +37,7 @@ export async function GET(req) {
     });
   } catch (error) {
     console.error("Error fetching posts:", error);
-    return new Response(JSON.stringify({ error: "Internal Server Error" }), {
+    return new NextResponse(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {
         "Content-Type": "application/json",
