@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import SocialSignin from "./SocialSignin";
 
 export default function SigninForm({ className, ...props }) {
   const router = useRouter();
@@ -125,6 +126,9 @@ export default function SigninForm({ className, ...props }) {
                   <Button type="submit" className="w-full">
                     Sign up
                   </Button>
+                </div>
+                <div>
+                  <SocialSignin />
                 </div>
                 <div className="text-center text-sm">
                   Have an account?{" "}

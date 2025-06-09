@@ -2,7 +2,10 @@ import connectDb from "@/lib/connectDb";
 import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
+
+  
 const handler = NextAuth({
   session: {
     secret: process.env.AUTH_SECRET,
@@ -38,6 +41,14 @@ const handler = NextAuth({
         }
       },
     }),
+    GoogleProvider({
+      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
+    }),
+    // GitHubProvider({
+    //   clientId: process.env.NEXT_PUBLIC_GITHUB_ID,
+    //   clientSecret: process.env.NEXT_PUBLIC_GITHUB_SECRET,
+    // }),
   ],
   callbacks: {},
   pages: {

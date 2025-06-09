@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import SocialSignin from "./SocialSignin";
 
 export default function LoginForm({ className, ...props }) {
   const [email, setEmail] = useState("");
@@ -103,6 +104,9 @@ export default function LoginForm({ className, ...props }) {
                   <Button type="submit" className="w-full">
                     Login
                   </Button>
+                </div>
+                <div>
+                  <SocialSignin />
                 </div>
 
                 <div className="text-center text-sm">
