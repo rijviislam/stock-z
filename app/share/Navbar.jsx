@@ -77,7 +77,7 @@ export default function Navbar() {
                   Log out
                 </button>
               ) : (
-                <div>
+                <div className="flex items-center justify-center gap-5">
                   <button>
                     <Link
                       href="/login"
