@@ -55,16 +55,36 @@ export default function Navbar() {
 
           <ul className="md:flex items-center justify-center gap-5 xl:gap-10  text-[#0D769B] font-medium hidden ">
             <li>
-              <Link href="/">Home</Link>
+              <Link
+                className="hover:text-[#B35929] transition ease-in-out delay-150"
+                href="/"
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <Link href="/about">About</Link>
+              <Link
+                className="hover:text-[#B35929] transition ease-in-out delay-150"
+                href="/about"
+              >
+                About
+              </Link>
             </li>
             <li>
-              <Link href="/all-products">All Products</Link>
+              <Link
+                className="hover:text-[#B35929] transition ease-in-out delay-150"
+                href="/all-products"
+              >
+                All Products
+              </Link>
             </li>
             <li>
-              <Link href="/sell">Sell</Link>
+              <Link
+                className="hover:text-[#B35929] transition ease-in-out delay-150"
+                href="/sell"
+              >
+                Sell
+              </Link>
             </li>
           </ul>
           <div className="flex items-center gap-5">

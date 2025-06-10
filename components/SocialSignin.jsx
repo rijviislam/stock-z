@@ -2,11 +2,11 @@ import { signIn } from "next-auth/react";
 
 export default function SocialSignin() {
   const handleSocialLogin = async (provider) => {
-    const resp = await signIn(provider);
+    const resp = await signIn(provider, { callbackUrl: "/" });
   };
   return (
     <div className="flex items-center justify-center space-x-5">
-      <button onClick={() => handleSocialLogin("google")}>
+      <button onClick={() => handleSocialLogin("google", { callbackUrl: "/" })}>
         <svg
           width="30px"
           height="30px"

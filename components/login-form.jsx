@@ -19,6 +19,9 @@ export default function LoginForm({ className, ...props }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  // const session = useSession();
+  // console.log("S", session);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -33,6 +36,7 @@ export default function LoginForm({ className, ...props }) {
     }
     console.log("res", res);
   };
+  // if (session?.data) return router.push("/");
 
   return (
     <div className="flex items-center justify-center w-full mt-28">

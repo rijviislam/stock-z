@@ -3,6 +3,7 @@ import SearchProvider from "@/context/SearchContext";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "./services/AuthProvider";
+import Footer from "./share/Footer";
 import Navbar from "./share/Navbar";
 
 const poppins = Poppins({
@@ -26,7 +27,8 @@ export default function RootLayout({ children }) {
           <SearchProvider>
             <Context>
               <Navbar />
-              <div className="h-screen">{children}</div>
+              <div >{children}</div>
+              <Footer/>
             </Context>
           </SearchProvider>
         </AuthProvider>

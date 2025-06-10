@@ -4,8 +4,6 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
-
-  
 const handler = NextAuth({
   session: {
     secret: process.env.AUTH_SECRET,
@@ -50,7 +48,16 @@ const handler = NextAuth({
     //   clientSecret: process.env.NEXT_PUBLIC_GITHUB_SECRET,
     // }),
   ],
-  callbacks: {},
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) token.user = user;
+      return token;
+    },
+    async session({ session, token }) {
+      session.user = token.user;
+      return session;
+    },
+  },
   pages: {
     signIn: "/login",
   },
