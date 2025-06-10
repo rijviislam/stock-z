@@ -3,6 +3,9 @@ import { NextResponse } from "next/server"
 
 export  const middleware = (req) => {
     const token = cookies(req).get("__Secure-next-auth.session-token")
+    // const token = cookies(req).get("next-auth.session-token")
+
+  
     console.log(token)
     if(!token) {
         return NextResponse.redirect(new URL("/login", req.url))
