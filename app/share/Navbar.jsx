@@ -90,12 +90,22 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <div>
               {session?.data ? (
-                <button
-                  className="bg-red-500 px-3 py-[6px] text-[15px] rounded-lg text-white font-medium cursor-pointer"
-                  onClick={() => signOut()}
-                >
-                  Log out
-                </button>
+                <div className="flex items-center justify-center">
+                  <Image
+                    src={session?.data?.user?.imgUrl}
+                    alt="Profile image"
+                    quality={100}
+                    width={20}
+                    height={20}
+                    className="rounded-full"
+                  />
+                  <button
+                    className="bg-red-500 px-3 py-[6px] text-[15px] rounded-lg text-white font-medium cursor-pointer"
+                    onClick={() => signOut()}
+                  >
+                    Log out
+                  </button>
+                </div>
               ) : (
                 <div className="flex items-center justify-center gap-5">
                   <button>
