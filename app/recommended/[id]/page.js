@@ -8,17 +8,16 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
+import BookMark from "@/components/BookMark";
 import RelatedProduct from "@/components/RelatedProduct";
 import Image from "next/image";
 import { recommendedSinglePostDetails } from "../../api/recommendedSinglePost/route";
 import { relatedProducts } from "../../api/relatedProduct/route";
 
 export default async function RecommendedSingleProduct({ params }) {
-  
   // console.log("Params object:", params); // Debugging
   const { id } = await params;
   // console.log("Extracted id:", id); // Ensure id is valid
-
 
   const product = await recommendedSinglePostDetails(id);
   if (!product) {
@@ -26,8 +25,6 @@ export default async function RecommendedSingleProduct({ params }) {
     return { notFound: true };
   }
 
-
-  
   const formatedId = product._id.toString();
   const relatedProduct = await relatedProducts(product?.brand, formatedId);
   // console.log("Related Product", relatedProduct)
@@ -42,12 +39,22 @@ export default async function RecommendedSingleProduct({ params }) {
         {product ? (
           <div className="w-full flex items-start ">
             <div className="w-full">
-              <h2 className="text-2xl font-medium text-black">
-                {product.title}
-              </h2>
-              <p className="text-lg text-black font-medium">
-                {product.description}
-              </p>
+              <div className="w-full flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-medium text-black">
+                    {product.title}
+                  </h2>
+                  <p className="text-lg text-black font-medium">
+                    {product.description}
+                  </p>
+                </div>
+             
+                <div>
+                  {" "}
+            <BookMark formattedProduct={formattedProduct} />
+                </div>
+              </div>
+
               <div className="flex justify-center lg:mt-10 w-full">
                 <div className="w-1/2">
                   <Image
@@ -111,7 +118,6 @@ export default async function RecommendedSingleProduct({ params }) {
       <RelatedProduct relatedProduct={relatedProduct} />
       {/* RECENTLY VIEW  */}
       <RecentlyViewed
-      
         recentlyViewed={formattedProduct}
         formatedId={formatedId}
       />
