@@ -90,13 +90,13 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <div>
               {session?.data ? (
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center gap-5">
                   <Image
                     src={session?.data?.user?.imgUrl}
                     alt="Profile image"
                     quality={100}
-                    width={20}
-                    height={20}
+                    width={50}
+                    height={50}
                     className="rounded-full"
                   />
                   <button
