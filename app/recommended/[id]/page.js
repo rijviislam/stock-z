@@ -15,19 +15,15 @@ import { recommendedSinglePostDetails } from "../../api/recommendedSinglePost/ro
 import { relatedProducts } from "../../api/relatedProduct/route";
 
 export default async function RecommendedSingleProduct({ params }) {
-  // console.log("Params object:", params); // Debugging
   const { id } = await params;
-  // console.log("Extracted id:", id); // Ensure id is valid
 
   const product = await recommendedSinglePostDetails(id);
   if (!product) {
-    // console.error("Product not found, returning 404");
     return { notFound: true };
   }
 
   const formatedId = product._id.toString();
   const relatedProduct = await relatedProducts(product?.brand, formatedId);
-  // console.log("Related Product", relatedProduct)
   const formattedProduct = {
     ...product,
     _id: formatedId,

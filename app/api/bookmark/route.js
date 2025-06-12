@@ -6,7 +6,6 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
   try {
     const { productId, userEmail } = await request.json();
-    console.log("PU", productId, userEmail);
     const db = await connectDb();
     const userCollection = db.collection("users");
     const productCollection = db.collection("stockProducts");

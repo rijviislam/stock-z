@@ -14,7 +14,6 @@ export default function LoginForm({ className, ...props }) {
   const [password, setPassword] = useState("");
   const router = useRouter();
   // const session = useSession();
-  // console.log("S", session);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,7 +27,6 @@ export default function LoginForm({ className, ...props }) {
     if (res.status === 200) {
       router.push("/");
     }
-    console.log("res", res);
   };
   // if (session?.data) return router.push("/");
 

@@ -11,8 +11,6 @@ export async function GET(req) {
     const searchParams = req.nextUrl.searchParams;
     const searchQuery = searchParams.get("q"); // Example: /api/products?q=iphone
 
-    console.log("Search query:", searchQuery);
-
     let query = {};
 
     if (searchQuery) {

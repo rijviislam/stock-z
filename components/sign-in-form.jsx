@@ -22,14 +22,12 @@ export default function SigninForm({ className, ...props }) {
     setImageFile(e.target.files[0]);
   };
 
-  console.log("Img", imageFile);
   // const baseUrl = process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
     // if (password !== confirmPass) {
-    //   console.log("errrrrr");
     //   return null;
     // }
     if (!imageFile) return alert("Please select an image!");
@@ -75,7 +73,7 @@ export default function SigninForm({ className, ...props }) {
         e.target.reset();
         router.push("/login");
       } else {
-        console.log("Register error");
+        return null;
       }
     } catch (error) {
       console.error("Upload error:", error);
@@ -83,8 +81,6 @@ export default function SigninForm({ className, ...props }) {
       setLoading(false);
     }
   };
-
-  console.log("url", uploadedUrl);
 
   return (
     <div className="w-full flex items-center justify-center mt-28">

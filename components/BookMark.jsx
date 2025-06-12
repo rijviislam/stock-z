@@ -23,7 +23,6 @@ export default function BookMark({ formattedProduct }) {
       }
 
       const data = await res.json();
-      console.log(data.message);
     } catch (error) {
       console.error("Failed to bookmark:", error);
     }

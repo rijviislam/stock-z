@@ -8,7 +8,6 @@ export async function GET(request) {
 
     // Get the 'brand' from query string
     const { searchParams } = new URL(request.url);
-    // console.log("SEARCH",searchParams)
     const brand = searchParams.get('brand');
 
     if (!brand) {
