@@ -52,12 +52,14 @@ export default function SigninForm({ className, ...props }) {
         return;
       }
       const imageUrl = data.data.url;
+      const bookMark = [];
       const newUser = {
         imgUrl: imageUrl,
         name: e.target.name.value,
         email: e.target.email.value,
         password: e.target.password.value,
         confirmPass: e.target.confirmPass.value,
+        bookMark: bookMark,
       };
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/signup/api`,

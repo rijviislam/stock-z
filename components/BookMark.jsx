@@ -1,37 +1,38 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+
 export default function BookMark({ formattedProduct }) {
   const product = formattedProduct;
+  const session = useSession();
 
   const handleBookmark = async () => {
-    console.log("Boook", product);
-    const id = product._id;
+    const productId = product._id;
+    const userEmail = session.data?.user?.email;
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/signup/api`,
-        {
-          method: "POST",
-          body: JSON.stringify(id),
-          headers: {
-            "content-type": "application/json",
-          },
-        }
-      );
-      if (res.ok) {
-        e.target.reset();
-        alert("BookMark");
-      } else {
-        console.log("Register error");
+      const res = await fetch(`${process.env.NEXTAUTH_URL}/api/bookmark`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productId, userEmail }),
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        console.error("Response text (error page):", text);
+        throw new Error("Failed to bookmark");
       }
+
+      const data = await res.json();
+      console.log(data.message);
     } catch (error) {
-      console.log(error);
+      console.error("Failed to bookmark:", error);
     }
   };
+
   return (
     <div>
       <button
-        onClick={() => handleBookmark()}
+        onClick={handleBookmark}
         // className="absolute bottom-3 right-3 cursor-default z-40 "
       >
         <svg

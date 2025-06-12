@@ -48,10 +48,10 @@ export default async function RecommendedSingleProduct({ params }) {
                     {product.description}
                   </p>
                 </div>
-             
+
                 <div>
                   {" "}
-            <BookMark formattedProduct={formattedProduct} />
+                  <BookMark formattedProduct={formattedProduct} />
                 </div>
               </div>
 

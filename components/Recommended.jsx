@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Recommended() {
-  // const session = await getServerSession(authOptions);
-  // console.log(session, "sess");
   const data = await getPostApi();
 
   return (

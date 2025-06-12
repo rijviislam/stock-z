@@ -89,7 +89,7 @@ export default function Navbar() {
             <li>
               <Link
                 className="hover:text-[#B35929] transition ease-in-out delay-150"
-                href="/sell"
+                href="/bookmark"
               >
                 <svg
                   fill="#0D769B"
@@ -108,14 +108,18 @@ export default function Navbar() {
             <div>
               {session?.data ? (
                 <div className="flex items-center justify-center gap-5">
-                  <Image
-                    src={session?.data?.user?.imgUrl}
-                    alt="Profile image"
-                    quality={100}
-                    width={30}
-                    height={30}
-                    className="rounded-full"
-                  />
+                  <div className="rounded-full border-2 border-[#0D769B] p-1">
+                    <Image
+                      src={
+                        session?.data?.user?.imgUrl ||
+                        "https://i.ibb.co/HGCGmV3/OIP.jpg"
+                      }
+                      alt="Profile image"
+                      quality={100}
+                      width={30}
+                      height={30}
+                    />
+                  </div>
                   <button
                     className="bg-red-500 px-3 py-[6px] text-[15px] rounded-lg text-white font-medium cursor-pointer"
                     onClick={() => signOut()}
