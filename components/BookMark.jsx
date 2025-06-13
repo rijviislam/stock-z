@@ -11,11 +11,14 @@ export default function BookMark({ formattedProduct }) {
     const userEmail = session.data?.user?.email;
 
     try {
-      const res = await fetch(`${process.env.NEXTAUTH_URL}/api/bookmark`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId, userEmail }),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/bookmark`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ productId, userEmail }),
+        }
+      );
       if (!res.ok) {
         const text = await res.text();
         console.error("Response text (error page):", text);
