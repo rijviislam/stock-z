@@ -9,9 +9,10 @@ const token =
 
 
 
-  if (!token) {
-    return NextResponse.redirect(new URL("/api/auth/signin", req.url));
+  if (!token && req.nextUrl.pathname !== "/login") {
+    return NextResponse.redirect(new URL("/login", req.url));
   }
+
 
   return NextResponse.next();
 };
