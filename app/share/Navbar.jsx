@@ -12,6 +12,8 @@ export default function Navbar() {
   const [resule, setResult] = useState("");
   const session = useSession();
 
+  console.log("SESSION", session);
+
   useEffect(() => {
     const fetchSearchResult = async () => {
       if (!searchItem) {

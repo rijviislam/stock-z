@@ -18,9 +18,7 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         const { email, password } = credentials;
-        if (!credentials) {
-          return null;
-        }
+
         if (!email || !password) {
           return null;
         }
@@ -32,10 +30,12 @@ const handler = NextAuth({
             return null;
           }
           const passMatch = bcrypt.compareSync(password, currentUser.password);
-          if (!passMatch) {
-            return null;
-          }
-          return currentUser;
+          if (!passMatch) return null;
+          return {
+            id: currentUser._id.toString(),
+            email: currentUser.email,
+            name: currentUser.name, // or whatever fields you want
+          };
         }
       },
     }),
@@ -58,13 +58,22 @@ const handler = NextAuth({
       return session;
     },
   },
+    cookies: {
+    sessionToken: {
+      name: process.env.NODE_ENV === "production"
+        ? "__Secure-next-auth.session-token"
+        : "next-auth.session-token",
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+  },
   pages: {
     signIn: "/login",
   },
 });
 
 export { handler as GET, handler as POST };
-
-
-
-
