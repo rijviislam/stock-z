@@ -109,7 +109,7 @@ export default function Navbar() {
             <div>
               {session?.data ? (
                 <div className="flex items-center justify-center gap-5">
-                  <div className="rounded-full border-2 border-[#0D769B] p-1">
+                  <div className="rounded-full border-2 border-[#0D769B] p-1 w-[40px] h-[40px] flex items-center justify-center overflow-hidden">
                     <Image
                       src={
                         session?.data?.user?.imgUrl ||
@@ -117,8 +117,9 @@ export default function Navbar() {
                       }
                       alt="Profile image"
                       quality={100}
-                      width={30}
-                      height={30}
+                      width={40}
+                      height={40}
+                      className=" object-contain"
                     />
                   </div>
                   <button
