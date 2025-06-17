@@ -17,6 +17,7 @@ const handler = NextAuth({
         password: {},
       },
       async authorize(credentials) {
+      
         const { email, password } = credentials;
 
         if (!email || !password) {
@@ -25,7 +26,6 @@ const handler = NextAuth({
         if (email) {
           const db = await connectDb();
           const currentUser = await db.collection("users").findOne({ email });
-
           if (!currentUser) {
             return null;
           }
@@ -34,7 +34,9 @@ const handler = NextAuth({
           return {
             id: currentUser._id.toString(),
             email: currentUser.email,
-            name: currentUser.name, // or whatever fields you want
+            name: currentUser.name,
+            imgUrl: currentUser.imgUrl || null,
+            bookMark: currentUser.bookMark || null,
           };
         }
       },
@@ -50,7 +52,15 @@ const handler = NextAuth({
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.user = user;
+      if (user) {
+        token.user = {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          imgUrl: user.imgUrl,
+          bookMark: user.bookMark,
+        };
+      }
       return token;
     },
     async session({ session, token }) {
@@ -58,19 +68,21 @@ const handler = NextAuth({
       return session;
     },
   },
-    cookies: {
-    sessionToken: {
-      name: process.env.NODE_ENV === "production"
-        ? "__Secure-next-auth.session-token"
-        : "next-auth.session-token",
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: process.env.NODE_ENV === "production",
-      },
-    },
-  },
+
+  // cookies: {
+  //   sessionToken: {
+  //     name:
+  //       process.env.NODE_ENV === "production"
+  //         ? "__Secure-next-auth.session-token"
+  //         : "next-auth.session-token",
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: "lax",
+  //       path: "/",
+  //       secure: process.env.NODE_ENV === "production",
+  //     },
+  //   },
+  // },
   pages: {
     signIn: "/login",
   },
