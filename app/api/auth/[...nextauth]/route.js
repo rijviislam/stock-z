@@ -26,6 +26,7 @@ const handler = NextAuth({
         if (email) {
           const db = await connectDb();
           const currentUser = await db.collection("users").findOne({ email });
+          console.log("CR", currentUser)
           if (!currentUser) {
             return null;
           }
@@ -37,6 +38,8 @@ const handler = NextAuth({
             name: currentUser.name,
             imgUrl: currentUser.imgUrl || null,
             bookMark: currentUser.bookMark || null,
+            role: currentUser.role || null,
+
           };
         }
       },
@@ -59,6 +62,7 @@ const handler = NextAuth({
           name: user.name,
           imgUrl: user.imgUrl,
           bookMark: user.bookMark,
+          role: user.role,
         };
       }
       return token;

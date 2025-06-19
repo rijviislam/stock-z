@@ -1,24 +1,35 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function BookMark({ formattedProduct }) {
   const product = formattedProduct;
   const session = useSession();
+  const router = useRouter();
+
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   const handleBookmark = async () => {
-    const productId = product._id;
+    if (session.status === "authenticated") {
+      console.log("CLICKED");
+    } else {
+      router.push("/login");
+      console.log("Please login or Regestion First");
+    }
     const userEmail = session.data?.user?.email;
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/bookmark`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/add-bookmark`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ productId, userEmail }),
+          body: JSON.stringify({ product, email: userEmail }),
         }
       );
+
       if (!res.ok) {
         const text = await res.text();
         console.error("Response text (error page):", text);
@@ -26,6 +37,8 @@ export default function BookMark({ formattedProduct }) {
       }
 
       const data = await res.json();
+      setIsBookmarked(true);
+      console.log(data);
     } catch (error) {
       console.error("Failed to bookmark:", error);
     }
@@ -38,7 +51,7 @@ export default function BookMark({ formattedProduct }) {
         // className="absolute bottom-3 right-3 cursor-default z-40 "
       >
         <svg
-          fill="#000000"
+          fill={isBookmarked ? "#ff0000" : "#000000"} //
           width="40px"
           height="40px"
           viewBox="0 0 24 24"

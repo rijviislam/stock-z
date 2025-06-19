@@ -9,12 +9,23 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import SocialSignin from "./SocialSignin";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 export default function SigninForm({ className, ...props }) {
   const router = useRouter();
 
   const [imageFile, setImageFile] = useState(null);
-  const [uploadedUrl, setUploadedUrl] = useState(null);
+  // const [uploadedUrl, setUploadedUrl] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [role, setRole] = useState("");
 
   const imgbbAPIKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
 
@@ -58,6 +69,7 @@ export default function SigninForm({ className, ...props }) {
         password: e.target.password.value,
         confirmPass: e.target.confirmPass.value,
         bookMark: bookMark,
+        role: role,
       };
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/signup/api`,
@@ -86,7 +98,7 @@ export default function SigninForm({ className, ...props }) {
     <div className="w-full flex items-center justify-center mt-28">
       <div
         className={cn(
-          "flex flex-col gap-6 rounded-xl max-w-[500px] ",
+          "flex flex-col gap-6 rounded-xl max-w-[600px] ",
           className
         )}
         {...props}
@@ -99,48 +111,58 @@ export default function SigninForm({ className, ...props }) {
           <CardContent>
             <form onSubmit={handleSignup}>
               <div className="grid gap-6">
-                <div className="flex flex-col gap-4">
-                  {/* <Button variant="outline" className="w-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path
-                        d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                    Login with Google
-                  </Button> */}
-                </div>
-                {/* <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
-                  <span className="relative z-10 bg-background px-2 text-muted-foreground">
-                    Or continue with
-                  </span>
-                </div> */}
+                <div className="flex flex-col gap-4"></div>
+
                 <div className="grid gap-6">
-                  <div className="grid gap-2">
-                    <Label htmlFor="image">Image</Label>
-                    <Input
-                      id="image"
-                      placeholder="Image"
-                      required
-                      type="file"
-                      className="cursor-pointer"
-                      accept="image/*"
-                      onChange={handleFileChange}
-                    />
+                  <div className="flex gap-5">
+                    <div className="grid gap-2 w-1/2">
+                      <Label htmlFor="image">Image</Label>
+                      <Input
+                        id="image"
+                        placeholder="Image"
+                        required
+                        type="file"
+                        className="cursor-pointer"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                      />
+                    </div>
+                    <div className="grid gap-2 w-1/2">
+                      <Label htmlFor="name">Name</Label>
+                      <Input id="name" type="name" placeholder="xyz" required />
+                    </div>
                   </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" type="name" placeholder="xyz" required />
+                  <div className="flex gap-5 items-center justify-center">
+                    <div className="grid gap-2 w-1/2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="m@example.com"
+                        required
+                      />
+                    </div>
+                    <div className="grid gap-2 w-1/2">
+                      <Label htmlFor="email">Select Role</Label>
+                      <Select
+                        onValueChange={(value) => setRole(value)}
+                        required
+                      >
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select your role" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectGroup>
+                            <SelectLabel>Select your role</SelectLabel>
+                            <SelectItem value="seller">Seller</SelectItem>
+                            <SelectItem value="user">User</SelectItem>
+                            <SelectItem value="both">Both</SelectItem>
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="m@example.com"
-                      required
-                    />
-                  </div>
+
                   <div className="grid gap-2">
                     <Label htmlFor="password">Password</Label>
                     <Input
@@ -159,18 +181,7 @@ export default function SigninForm({ className, ...props }) {
                       required
                     />
                   </div>
-                  {/* <div className="grid gap-2">
-                  <div className="flex items-center">
-                    <Label htmlFor="password">Password</Label>
-                    <a
-                      href="#"
-                      className="ml-auto text-sm underline-offset-4 hover:underline"
-                    >
-                      Forgot your password?
-                    </a>
-                  </div>
-                  <Input id="password" type="password" required />
-                </div> */}
+
                   <Button type="submit" className="w-full">
                     Sign up
                   </Button>
