@@ -19,7 +19,6 @@ export default function BrandPage() {
         const data = await res.json();
         setProducts(data);
       } catch (err) {
-        console.error(err);
         setError(err.message);
       } finally {
         setLoading(false);

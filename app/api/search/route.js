@@ -34,7 +34,6 @@ export async function GET(req) {
       },
     });
   } catch (error) {
-    console.error("Error fetching posts:", error);
     return new NextResponse(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {

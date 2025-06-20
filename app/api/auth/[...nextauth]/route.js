@@ -26,7 +26,6 @@ const handler = NextAuth({
         if (email) {
           const db = await connectDb();
           const currentUser = await db.collection("users").findOne({ email });
-          console.log("CR", currentUser)
           if (!currentUser) {
             return null;
           }

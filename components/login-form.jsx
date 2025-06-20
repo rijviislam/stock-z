@@ -27,7 +27,7 @@ export default function LoginForm({ className, ...props }) {
     if (res.ok) {
       router.push("/");
     } else {
-      console.log(res.error);
+      return alert(res.error);
     }
   };
   // if (session?.data) return router.push("/");

@@ -15,7 +15,6 @@ export async function POST(req) {
 
     return NextResponse.json({ bookmarks: existUser.bookMark || [] });
   } catch (err) {
-    console.error(err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

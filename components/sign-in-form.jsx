@@ -88,7 +88,7 @@ export default function SigninForm({ className, ...props }) {
         return null;
       }
     } catch (error) {
-      console.error("Upload error:", error);
+      return alert("Upload error:", error);
     } finally {
       setLoading(false);
     }

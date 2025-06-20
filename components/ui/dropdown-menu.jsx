@@ -1,9 +1,8 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
-
-import { cn } from "@/lib/utils";
 
 function DropdownMenu({ ...props }) {
   return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
@@ -129,19 +128,6 @@ function DropdownMenuSeparator({ className, ...props }) {
   );
 }
 
-function DropdownMenuShortcut({ className, ...props }) {
-  return (
-    <span
-      data-slot="dropdown-menu-shortcut"
-      className={cn(
-        "text-muted-foreground ml-auto text-xs tracking-widest",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-
 function DropdownMenuSub(props) {
   return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />;
 }
@@ -176,17 +162,29 @@ function DropdownMenuSubContent({ className, ...props }) {
   );
 }
 
+// ✅ ADDED: DropdownMenuGroup component
+function DropdownMenuGroup({ className, ...props }) {
+  return (
+    <DropdownMenuPrimitive.Group
+      data-slot="dropdown-menu-group"
+      className={className}
+      {...props}
+    />
+  );
+}
+
 export {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
+  // DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,

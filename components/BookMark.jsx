@@ -13,10 +13,9 @@ export default function BookMark({ formattedProduct }) {
 
   const handleBookmark = async () => {
     if (session.status === "authenticated") {
-      console.log("CLICKED");
+      return;
     } else {
       router.push("/login");
-      console.log("Please login or Regestion First");
     }
     const userEmail = session.data?.user?.email;
 
@@ -32,15 +31,13 @@ export default function BookMark({ formattedProduct }) {
 
       if (!res.ok) {
         const text = await res.text();
-        console.error("Response text (error page):", text);
         throw new Error("Failed to bookmark");
       }
 
       const data = await res.json();
       setIsBookmarked(true);
-      console.log(data);
     } catch (error) {
-      console.error("Failed to bookmark:", error);
+      return alert("Failed to bookmark:", error);
     }
   };
 

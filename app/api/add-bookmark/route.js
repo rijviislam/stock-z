@@ -37,7 +37,6 @@ export const POST = async (req) => {
     return NextResponse.json({ message: "Product bookmarked successfully" }, { status: 200 });
 
   } catch (error) {
-    console.error("Error bookmarking product:", error);
     return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
   }
 };

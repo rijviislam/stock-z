@@ -34,7 +34,7 @@ export default function BookmarkGrid() {
   }, [email]);
 
   return (
-    <div className=" h-screen flex items-center mt-28 flex-col">
+    <div className="flex items-center mt-28 flex-col">
       <h1 className="text-2xl  font-semibold text-gray-700 text-shadow-lg bg-transparent text-center lg:text-center">
         Bookmarks
       </h1>
