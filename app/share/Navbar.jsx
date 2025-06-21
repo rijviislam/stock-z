@@ -27,7 +27,6 @@ export default function Navbar() {
   const [resule, setResult] = useState("");
   const session = useSession();
 
-  console.log("SESSION", session);
 
   useEffect(() => {
     const fetchSearchResult = async () => {
@@ -42,7 +41,7 @@ export default function Navbar() {
         const data = await res.json();
         setResult(data);
       } catch (error) {
-        console.error("Error fetching search results", error);
+        consle.error("Error fetching search results", error);
       }
     };
 

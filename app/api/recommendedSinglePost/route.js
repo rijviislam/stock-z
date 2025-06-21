@@ -14,7 +14,6 @@ export const recommendedSinglePostDetails = async (productId) => {
     }
     return productDetails;
   } catch (error) {
-    // console.error("Error fetching posts:", error);
     return new NextResponse(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {
